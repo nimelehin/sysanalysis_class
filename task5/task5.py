@@ -40,19 +40,7 @@ def zap(templates):
     return matrix
 
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(prog='Task5')
-    parser.add_argument('filename1')
-    parser.add_argument('filename2')
-    args = parser.parse_args()
-
-    with open(args.filename1) as f:
-        file_content = f.read()
-        templates = json.loads(file_content)
-    with open(args.filename2) as f:
-        file_content = f.read()
-        templates_2 = json.loads(file_content)
-
+def task(templates, templates_2):
     a = (zap(templates))
     b = (zap(templates_2))
     at = a.T
@@ -65,6 +53,21 @@ if __name__ == "__main__":
 
     l = [[str(j+1), str(k+1)] for j in range(len(e))
          for k in range(j, len(e[j])) if e[j][k] == 0]
+    return str(l).replace('\'', '"')
 
-    with open('result.json', 'w') as res:
-        res.write(str(l).replace('\'', '"'))
+
+# if __name__ == "__main__":
+#     parser = argparse.ArgumentParser(prog='Task5')
+#     parser.add_argument('filename1')
+#     parser.add_argument('filename2')
+#     args = parser.parse_args()
+
+#     with open(args.filename1) as f:
+#         file_content = f.read()
+#         templates = json.loads(file_content)
+#     with open(args.filename2) as f:
+#         file_content = f.read()
+#         templates_2 = json.loads(file_content)
+
+#     with open('result.json', 'w') as res:
+#         res.write(task(templates, templates_2))

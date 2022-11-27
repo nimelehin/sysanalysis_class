@@ -41,6 +41,8 @@ def zap(templates):
 
 
 def task(templates, templates_2):
+    templates = json.loads(templates)
+    templates_2 = json.loads(templates_2)
     a = (zap(templates))
     b = (zap(templates_2))
     at = a.T
@@ -53,8 +55,7 @@ def task(templates, templates_2):
 
     l = [[str(j+1), str(k+1)] for j in range(len(e))
          for k in range(j, len(e[j])) if e[j][k] == 0]
-    return str(l).replace('\'', '"')
-
+    return json.dumps(l)
 
 # if __name__ == "__main__":
 #     parser = argparse.ArgumentParser(prog='Task5')
